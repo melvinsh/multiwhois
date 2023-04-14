@@ -1,6 +1,8 @@
 # multiwhois
 
-`multiwhois` is a Go package for querying domain information from WHOIS servers. It uses the `github.com/domainr/whois` package to fetch the WHOIS information and parses the response into a struct containing the domain owner, expiration date, and availability status.
+`multiwhois` is a Go package for querying and parsing domain information from WHOIS servers. 
+
+It uses the `github.com/domainr/whois` package to fetch the WHOIS information and parses the response into a struct containing the domain owner, expiration date, and availability status.
 
 ## Supported TLDs
 We currently support:
@@ -35,7 +37,7 @@ func main() {
 	}
 
 	fmt.Println("Domain:", info.Domain)
-    fmt.Println("Available:", info.IsAvailable)
+        fmt.Println("Available:", info.IsAvailable)
 	fmt.Println("Expiration:", info.Expiration)
 	fmt.Println("Full WHOIS response:", info.FullWhois)
 }
@@ -60,10 +62,11 @@ go test github.com/melvinsh/multiwhois
 
 `multiwhois` uses YAML files to configure the regex patterns for parsing WHOIS responses. The YAML files are located in the `tlds` directory and are named after the TLD they represent (e.g. `com.yml` for the `.com` TLD).
 
-The YAML file must contain the following fields:
+The YAML file can contain the following fields, depending on which information is returned by the WHOIS servers for each TLD:
 
 - `availability` (string): a regex pattern for determining the availability of the domain
 - `expiration` (string): a regex pattern for extracting the expiration date from the WHOIS response
+- `expiration_format` (string): the format used to parsed the expiration time
 
 Here is an example YAML file for the `.com` TLD:
 
