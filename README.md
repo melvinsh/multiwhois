@@ -5,11 +5,11 @@
 It uses the `github.com/domainr/whois` package to fetch the WHOIS information and parses the response into a struct containing the domain owner, expiration date, and availability status.
 
 ## Supported TLDs
-We currently support:
-- .com
-- .info
-- .be
-- .nl
+It currently supports parsing WHOIS information for the following TLDs:
+- `.com`
+- `.info`
+- `.be`
+- `.nl`
 
 ## Installation
 
